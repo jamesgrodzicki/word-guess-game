@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-    var charList = ['aang', 'jonsnow'];
+    var charList = ['aang','mikasa'];
     var compIndex = Math.floor(Math.random() * charList.length);
     var compChoice = charList[compIndex];
     var guesses = [];
     var guessesLeft = 12;
-    console.log(compChoice);
+    var wins = 0;
+    //console.log(compChoice);
 
     function splitWord(character) {
         var charSplit = character.split("");
@@ -43,6 +44,34 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
     }
 
+    function checkWin(){
+        return !charContainer.includes("_");
+    }
+
+    function checkLoss(){
+        if(guessesLeft == 0){
+            return true;
+        }
+        
+        return false;
+    }
+
+    function resetGame(){
+        var newChoice = Math.floor(Math.random() * charList.length);
+        compChoice = charList[newChoice];
+        charContainer = charDisplay(compChoice);
+        guessesLeft = 12;
+        guesses = [];
+        document.getElementById("failed-guess").innerHTML = "";
+    }
+
+    function removeElementsByClass(className){
+        var elements = document.getElementsByClassName(className);
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+
     for (var i = 0; i < compChoice.length; i++) {
         var targetDiv = document.getElementById("charName");
         var newP = document.createElement("p");
@@ -65,21 +94,26 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var userPress = event.key.toLowerCase();
         document.querySelector("#game-start").innerHTML = "";
         checkCorrect(userPress, compChoice, guesses);
+        if(checkWin()){
+            resetGame();
+            wins++;
+        }
 
+        else if(checkLoss()){
+            resetGame();
+            wins = 0;
+        }
         document.getElementById("guesses-left").innerHTML = guessesLeft;
+        document.getElementById("wins").innerHTML = "Games Won " + wins;
+
+        removeElementsByClass("letter");
 
         var nameDiv = document.getElementById("charName");
-        charContainer.forEach(function (name) {
+        charContainer.forEach(function (letter) {
             var newLetterP = document.createElement("p");
             newLetterP.setAttribute("class", "letter");
-            newLetterP.textContent = name;
+            newLetterP.textContent = letter;
             nameDiv.appendChild(newLetterP);
         });
-
-        for (var i = 0; i < compChoice.length; i++) {
-            var parent = document.getElementById("charName");
-            var child = document.querySelector(".letter");
-            parent.removeChild(child);
-        }
     }
 })
