@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
         return charContainer;
     }
+
     for (var i = 0; i < compChoice.length; i++) {
         var targetDiv = document.getElementById("charName");
         var newP = document.createElement("p");
@@ -36,7 +37,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         newP.setAttribute("id", "letter");
         document.getElementById("letter").innerHTML = charContainer[i]; 
     }
-    console.log(charDisplay(compChoice));
+    document.querySelector("#letter").innerHTML = "";
+    //console.log(charDisplay(compChoice));
 
 
     //checkCorrect("o", compChoice);
