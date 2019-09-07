@@ -35,11 +35,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var newP = document.createElement("p");
         targetDiv.appendChild(newP);
         newP.setAttribute("id", "letter");
-        document.getElementById("letter").innerHTML = charContainer[i]; 
-    }
-    document.querySelector("#letter").innerHTML = "";
-    //console.log(charDisplay(compChoice));
 
+    }
+    
+    document.getElementById("letter").innerHTML = (charDisplay(compChoice));
 
     //checkCorrect("o", compChoice);
     //console.log(splitWord(compChoice));
