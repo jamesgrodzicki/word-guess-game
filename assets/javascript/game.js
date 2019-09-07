@@ -29,14 +29,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
         return charContainer;
     }
-    // for (var i = 0; i < compChoice.length; i++) {
-    //     var targetDiv = document.getElementById("charName");
-    //     var newP = document.createElement("p");
-    //     targetDiv.appendChild(newP);
-    //     newP.setAttribute("id", "letter");
-    //     document.getElementById("letter").innerHTML = charContainer[i]; 
-    // }
-    //console.log(charDisplay(compChoice));
+    for (var i = 0; i < compChoice.length; i++) {
+        var targetDiv = document.getElementById("charName");
+        var newP = document.createElement("p");
+        targetDiv.appendChild(newP);
+        newP.setAttribute("id", "letter");
+        document.getElementById("letter").innerHTML = charContainer[i]; 
+    }
+    console.log(charDisplay(compChoice));
 
 
     //checkCorrect("o", compChoice);
@@ -55,10 +55,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
             nameDiv.appendChild(newLetterP);
         });
 
-        // for (var i = 0; i < compChoice.length; i++) {
-        //     var parent = document.getElementById("charName");
-        //     var child = document.querySelector("#letter");
-        //     parent.removeChild(child);
-        // }
+        for (var i = 0; i < compChoice.length; i++) {
+            var parent = document.getElementById("charName");
+            var child = document.querySelector("#letter");
+            parent.removeChild(child);
+        }
     }
 })
