@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-    var charList = ['aang','mikasa'];
+    var charList = ['aang', 'jonsnow', 'finn', 'tsukimoto', 'dragon', 'sweetdee', 'dennis', 'creed', 'zuko', 'thehound', 'mikasa'];
     var compIndex = Math.floor(Math.random() * charList.length);
     var compChoice = charList[compIndex];
     var guesses = [];
